@@ -13,21 +13,32 @@
 <body>
 
 <header class="header">
-  <div class="wrapper">
-    <nav aria-label="Main navigation">
+    <div class="wrapper">
+        <nav aria-label="Main navigation">
 
-      <h1 class="logo"> 🛒 GUNNA</h1>
+            <h1 class="logo"><a href="index.html#hero">🛒 GUNNA </a></h1>
 
-      <ul>
-        <li><a href="index.html#hero">Home</a></li>
-        <li><a href="index.html#shop">Shop</a></li>
-        <li><a href="index.html#hero2">Minimal collection</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+            <button class="hamburger" id="hamburger-btn" aria-label="Open navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
-    </nav>
-  </div>
+            <ul id="nav-links">
+                <li><a href="index.html#hero">Home</a></li>
+                <li><a href="index.html#shop">Shop</a></li>
+                <li><a href="index.html#hero2">Minimal collection</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+          <div class="cart-info">
+    <span>🛒 Cart: <span id="cart-count">0</span> | $<span id="total-price">0</span></span>
+    <button class="clear-btn" id="clear-cart-btn">Clear</button>
+</div>
+
+        </nav>
+    </div>
 </header>
 
 <main>
@@ -49,7 +60,7 @@
         </div>
 
         <article id="contactform">
-            <form action="https://httpbin.org/get" method="get">
+            <form action="https://httpbin.org/post" method="post">
 
                 <label for="name">Name:</label>
                 <input type="text" name="name" id="name" placeholder="Your name" autocomplete="on" required autofocus>
@@ -57,6 +68,11 @@
                 <p>
                     <label for="last-name">Last Name:</label>
                     <input type="text" name="last-name" id="last-name" placeholder="Your last name" autocomplete="on" required>
+                </p>
+
+                <p>
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password" placeholder="Your password" required>
                 </p>
 
                 <p>
@@ -72,7 +88,6 @@
     </div>
 
 </section>
-</main>
 
 
     </div> 
@@ -94,6 +109,7 @@
   </div>
 </footer>
 
+<script src="script.js"></script>
 
 </body>
 </html>
