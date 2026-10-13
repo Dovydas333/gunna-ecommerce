@@ -1,82 +1,205 @@
-document.addEventListener("DOMContentLoaded", () => {
 
-    let cartCount = parseInt(localStorage.getItem("cartCount")) || 0;
-    let totalPrice = parseFloat(localStorage.getItem("totalPrice")) || 0;
+document.addEventListener('DOMContentLoaded', () => {
 
-    updateCartUI(cartCount, totalPrice);
+    const hamburgerBtn = document.querySelector('#hamburger-btn');
+    const navLinks = document.querySelector('#nav-links');
 
-    const addButtons = document.querySelectorAll(".add-to-cart-btn");
-
-    addButtons.forEach(button => {
-        button.addEventListener("click", () => {
-
-            const price = parseFloat(button.dataset.price);
-
-            if (isNaN(price)) return;
-
-            cartCount++;
-            totalPrice += price;
-
-            localStorage.setItem("cartCount", cartCount);
-            localStorage.setItem("totalPrice", totalPrice);
-
-            updateCartUI(cartCount, totalPrice);
+    if (hamburgerBtn && navLinks) {
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('active');
+            navLinks.classList.toggle('active');
         });
-    });
 
-    const clearBtn = document.getElementById("clear-cart-btn");
-
-    if (clearBtn) {
-        clearBtn.addEventListener("click", () => {
-
-            cartCount = 0;
-            totalPrice = 0;
-
-            localStorage.removeItem("cartCount");
-            localStorage.removeItem("totalPrice");
-
-            updateCartUI(cartCount, totalPrice);
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
         });
     }
 
+    let cart = JSON.parse(localStorage.getItem('gunna_cart')) || [];
 
-    const hamburgerBtn = document.getElementById("hamburger-btn");
-    const navLinks = document.getElementById("nav-links");
+    const cartCountElement = document.querySelector('#cart-count');
+    const cartTotalPriceElement = document.querySelector('#total-price');
 
-    if (hamburgerBtn && navLinks) {
+    updateCartUI();
 
-        hamburgerBtn.addEventListener("click", () => {
+    document.addEventListener('click', (e) => {
+        const addToCartBtn = e.target.closest('.add-to-cart-btn');
+        
+        if (addToCartBtn) {
+            const id = addToCartBtn.dataset.id || 'default-id';
+            const name = addToCartBtn.dataset.name || 'Gunna Item';
+            const price = parseFloat(addToCartBtn.dataset.price) || 0;
 
-            hamburgerBtn.classList.toggle("active");
-            navLinks.classList.toggle("active");
+            addToCart(id, name, price);
 
+            const originalText = addToCartBtn.textContent;
+            addToCartBtn.textContent = 'ADDED ✓';
+            addToCartBtn.style.background = '#27ae60';
+            
+            setTimeout(() => {
+                addToCartBtn.textContent = originalText;
+                addToCartBtn.style.background = '';
+            }, 1000);
+        }
+    });
+
+    function addToCart(id, name, price) {
+        const existingItem = cart.find(item => item.id === id);
+
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cart.push({ id, name, price, quantity: 1 });
+        }
+
+        saveAndRender();
+    }
+
+    function saveAndRender() {
+        localStorage.setItem('gunna_cart', JSON.stringify(cart));
+        updateCartUI();
+        if (document.querySelector('#cart-container')) {
+            renderCartPage();
+        }
+    }
+
+    function updateCartUI() {
+        let totalCount = 0;
+        let totalPrice = 0;
+
+        cart.forEach(item => {
+            totalCount += item.quantity;
+            totalPrice += item.price * item.quantity;
         });
 
-        navLinks.querySelectorAll("a").forEach(link => {
+        if (cartCountElement) {
+            cartCountElement.textContent = totalCount;
+        }
 
-            link.addEventListener("click", () => {
+        if (cartTotalPriceElement) {
+            cartTotalPriceElement.textContent = totalPrice.toFixed(2);
+        }
+    }
 
-                hamburgerBtn.classList.remove("active");
-                navLinks.classList.remove("active");
+    const cartContainer = document.querySelector('#cart-container');
+    if (cartContainer) {
+        renderCartPage();
 
-            });
+        cartContainer.addEventListener('click', (e) => {
+            const id = e.target.dataset.id;
+            if (!id) return;
 
+            if (e.target.classList.contains('increase-btn')) {
+                const item = cart.find(i => i.id === id);
+                if (item) item.quantity += 1;
+            } else if (e.target.classList.contains('decrease-btn')) {
+                const item = cart.find(i => i.id === id);
+                if (item) {
+                    item.quantity -= 1;
+                    if (item.quantity <= 0) {
+                        cart = cart.filter(i => i.id !== id);
+                    }
+                }
+            } else if (e.target.classList.contains('remove-item-btn')) {
+                cart = cart.filter(i => i.id !== id);
+            }
+
+            saveAndRender();
         });
+    }
+
+    function renderCartPage() {
+        if (!cartContainer) return;
+
+        if (cart.length === 0) {
+            cartContainer.innerHTML = `
+                <div class="empty-cart-msg">
+                    <p>Your cart is currently empty.</p>
+                    <a href="index.html#shop" style="margin-top: 1rem; display: inline-block;">Return to Shop</a>
+                </div>
+            `;
+            return;
+        }
+
+        let html = `
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Subtotal</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+        `;
+
+        let grandTotal = 0;
+
+        cart.forEach(item => {
+            let subtotal = item.price * item.quantity;
+            grandTotal += subtotal;
+
+            html += `
+                <tr>
+                    <td><strong>${item.name}</strong></td>
+                    <td>$${item.price.toFixed(2)}</td>
+                    <td>
+                        <div class="cart-item-controls">
+                            <button class="qty-btn decrease-btn" data-id="${item.id}">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="qty-btn increase-btn" data-id="${item.id}">+</button>
+                        </div>
+                    </td>
+                    <td>$${subtotal.toFixed(2)}</td>
+                    <td><button class="remove-item-btn" data-id="${item.id}">Remove</button></td>
+                </tr>
+            `;
+        });
+
+        html += `
+                </tbody>
+            </table>
+            <div class="cart-summary">
+                <h3>Total: $${grandTotal.toFixed(2)}</h3>
+                <button class="checkout-btn" onclick="alert('Checkout feature coming soon!')">Proceed to Checkout</button>
+            </div>
+        `;
+
+        cartContainer.innerHTML = html;
     }
 
 });
 
+const contactForm = document.getElementById('emailjs-form');
+const submitBtn = document.getElementById('submit-btn');
 
-function updateCartUI(count, price) {
+if (contactForm) {
+    contactForm.addEventListener('submit', function(event) {
+        event.preventDefault(); 
 
-    const countEl = document.getElementById("cart-count");
-    const priceEl = document.getElementById("total-price");
+        submitBtn.textContent = 'SENDING...';
+        submitBtn.disabled = true;
 
-    if (countEl) {
-        countEl.textContent = count;
-    }
+        emailjs.sendForm('service_sziyyso', 'template_br5z4rr', this)
+            .then(function() {
+                submitBtn.textContent = 'SENT SUCCESSFULLY! ✓';
+                submitBtn.style.background = '#27ae60';
+                contactForm.reset();
 
-    if (priceEl) {
-        priceEl.textContent = price.toFixed(2);
-    }
+                setTimeout(() => {
+                    submitBtn.textContent = 'SUBMIT NOW';
+                    submitBtn.style.background = '#111';
+                    submitBtn.disabled = false;
+                }, 3000);
+            }, function(error) {
+                alert('Failed to send message: ' + JSON.stringify(error));
+                submitBtn.textContent = 'TRY AGAIN';
+                submitBtn.disabled = false;
+            });
+    });
 }
