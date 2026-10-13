@@ -6,24 +6,48 @@
     <meta name="author" content="Dovydas Valančius">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gunna | E-SHOP</title>
-    <link rel="icon" href="hoodie.png" type="image/png">
+    <link rel="icon" href="/hoodie.png" type="image/png">
     <link rel="stylesheet" href="styles.css" type="text/css">
 </head>
 
 <body>
 
 <header class="header">
+
+    <div class="marquee-bar">
+    <div class="marquee-content">
+        <span>FREE SHIPPING ON ORDERS ABOVE 100€</span>
+        <span class="fire">🔥</span>
+        <span>FREE SHIPPING ON ORDERS ABOVE 100€</span>
+        <span class="fire">🔥</span>
+        <span>NEW COLLECTION IS COMING SOON</span>
+        <span class="fire">🔥</span>
+    </div>
+    
+    <div class="marquee-content" aria-hidden="true">
+        <span>FREE SHIPPING ON ORDERS ABOVE 100€</span>
+        <span class="fire">🔥</span>
+        <span>FREE SHIPPING ON ORDERS ABOVE 100€</span>
+        <span class="fire">🔥</span>
+        <span>NEW COLLECTION IS COMING SOON</span>
+        <span class="fire">🔥</span>
+    </div>
+</div>
+
+
     <div class="wrapper">
         <nav aria-label="Main navigation">
 
             <h1 class="logo"><a href="index.html#hero">🛒 GUNNA </a></h1>
 
+            
             <button class="hamburger" id="hamburger-btn" aria-label="Open navigation menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
 
+            
             <ul id="nav-links">
                 <li><a href="index.html#hero">Home</a></li>
                 <li><a href="index.html#shop">Shop</a></li>
@@ -32,10 +56,13 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
 
-<div class="cart-info">
-    <span>🛒 Cart: <span id="cart-count">0</span> | $<span id="total-price">0</span></span>
-    <button class="clear-btn" id="clear-cart-btn">Clear</button>
-</div>
+           
+                <div class="cart-info">
+            <a href="cart.html" class="cart-btn-link" aria-label="Shopping cart">
+                🛒 <span class="cart-label">Cart</span> 
+                <span id="cart-count">0</span> (<span id="total-price">0.00</span> €)
+            </a>
+        </div>
 
         </nav>
     </div>
@@ -62,21 +89,28 @@
 
         <h2 class="hotdeals">Hot Deals</h2>
 
-        <div class="cards">
+        <div class="cards" id="products-grid">
 
             <article class="card spring">
                 <h3>Spring collection</h3>
-                <a href="spring.html" class="btn">SHOP NOW →</a>
+                <p class="price">€120.00</p>
+              
+                <button class="add-to-cart-btn" data-id="1" data-name="Spring Hoodie" data-price="120">Add to Cart</button>
+                <a href="spring.html" class="btn">VIEW MORE →</a>
             </article>
 
             <article class="card prime">
                 <h3>Prime collection</h3>
-                <a href="prime.html" class="btn">SHOP NOW →</a>
+                <p class="price">€90.00</p>
+                <button class="add-to-cart-btn" data-id="2" data-name="Prime Jacket" data-price="90">Add to Cart</button>
+                <a href="prime.html" class="btn">VIEW MORE →</a>
             </article>
 
             <article class="card wonder">
                 <h3>Wonder collection</h3>
-                <a href="wonder.html" class="btn">SHOP NOW →</a>
+                <p class="price">€35.00</p>
+                <button class="add-to-cart-btn" data-id="3" data-name="Wonder Tee" data-price="35">Add to Cart</button>
+                <a href="wonder.html" class="btn">VIEW MORE →</a>
             </article>
 
         </div>
@@ -103,17 +137,21 @@
 </main>
 
 <footer class="footer">
-    <div class="footer-wrapper">
-
+    <div class="wrapper footer-wrapper">
         <div class="footer-left">
             <p>© 2026 GUNNA</p>
+        </div>
+
+        <div class="footer-socials">
+            <a href="https://instagram.com" target="_blank" rel="noopener">📸 Instagram</a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener">🎵 TikTok</a>
+            <a href="https://gmail.com">✉️ Gmail</a>
         </div>
 
         <div class="footer-right">
             <a href="about.html">About Us</a>
             <a href="contact.html">Contact Us</a>
         </div>
-
     </div>
 </footer>
 
