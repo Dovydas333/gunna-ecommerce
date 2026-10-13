@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="author" content="Dovydas Valančius">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gunna | E-SHOP</title>
+    <title>Gunna | Prime Collection</title>
     <link rel="icon" href="/hoodie.png" type="image/png">
     <link rel="stylesheet" href="styles.css" type="text/css">
 </head>
@@ -33,9 +33,12 @@
             </ul>
 
             <div class="cart-info">
-    <span>🛒 Cart: <span id="cart-count">0</span> | $<span id="total-price">0</span></span>
-    <button class="clear-btn" id="clear-cart-btn">Clear</button>
-</div>
+                <a href="cart.html" class="cart-btn-link" aria-label="Shopping cart">
+                    🛒 <span class="cart-label">Cart</span> 
+                    <span id="cart-count">0</span> (<span id="total-price">0.00</span> €)
+                </a>
+            </div>
+
         </nav>
     </div>
 </header>
@@ -52,22 +55,70 @@
             <article class="product-card">
                 <img src="oversizedhoodie.jpg" alt="Oversized hoodie" loading="lazy">
                 <h3>Oversized premium hoodie</h3>
-                <p class="price">$59</p>
-               <button class="btn1 add-to-cart-btn" data-price="59">Add To Cart</button>
+                <p class="price">€59</p>
+                
+                <div class="product-options">
+                    <label for="size-prime-1">Size:</label>
+                    <select id="size-prime-1" class="size-select">
+                        <option value="S">S</option>
+                        <option value="M" selected>M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                    </select>
+                </div>
+
+                <div class="product-desc">
+                    <p><strong>Material:</strong> 100% heavyweight cotton fleece (450 GSM).</p>
+                    <p><strong>Why wear it:</strong> Delivers an authentic structured streetwear look with exceptional thickness, keeping you warm and maintaining its premium shape over time.</p>
+                </div>
+
+                <button class="btn1 add-to-cart-btn" data-id="prime-1" data-name="Oversized premium hoodie" data-price="59">Add To Cart</button>
             </article>
 
             <article class="product-card">
                 <img src="heavyweight.jpg" alt="Heavyweight T-shirt" loading="lazy">
                 <h3>Heavyweight T‑shirt</h3>
-                <p class="price">$35</p>
-                <button class="btn1 add-to-cart-btn" data-price="35">Add To Cart</button>
+                <p class="price">€35</p>
+                
+                <div class="product-options">
+                    <label for="size-prime-2">Size:</label>
+                    <select id="size-prime-2" class="size-select">
+                        <option value="S">S</option>
+                        <option value="M" selected>M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                    </select>
+                </div>
+
+                <div class="product-desc">
+                    <p><strong>Material:</strong> 280 GSM thick combed cotton.</p>
+                    <p><strong>Why wear it:</strong> Features a tight ribbed collar that never sags and a solid drape, making it a supreme everyday staple.</p>
+                </div>
+
+                <button class="btn1 add-to-cart-btn" data-id="prime-2" data-name="Heavyweight T-shirt" data-price="35">Add To Cart</button>
             </article>
 
             <article class="product-card">
                 <img src="puffervest.jpg" alt="Premium puffer vest" loading="lazy">
                 <h3>Premium puffer vest</h3>
-                <p class="price">$45</p>
-                <button class="btn1 add-to-cart-btn" data-price="45">Add To Cart</button>
+                <p class="price">€45</p>
+                
+                <div class="product-options">
+                    <label for="size-prime-3">Size:</label>
+                    <select id="size-prime-3" class="size-select">
+                        <option value="S">S</option>
+                        <option value="M" selected>M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                    </select>
+                </div>
+
+                <div class="product-desc">
+                    <p><strong>Material:</strong> Synthetic down insulation with windproof outer shell.</p>
+                    <p><strong>Why wear it:</strong> The ultimate layering piece for transitional weather, combining modern utility aesthetics with active comfort.</p>
+                </div>
+
+                <button class="btn1 add-to-cart-btn" data-id="prime-3" data-name="Premium puffer vest" data-price="45">Add To Cart</button>
             </article>
 
         </div>
@@ -78,17 +129,21 @@
 </main>
 
 <footer class="footer">
-    <div class="footer-wrapper">
-
+    <div class="wrapper footer-wrapper">
         <div class="footer-left">
             <p>© 2026 GUNNA</p>
+        </div>
+
+        <div class="footer-socials">
+            <a href="https://instagram.com" target="_blank" rel="noopener">📸 Instagram</a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener">🎵 TikTok</a>
+            <a href="https://Gmail.com">✉️ Gmail</a>
         </div>
 
         <div class="footer-right">
             <a href="about.html">About Us</a>
             <a href="contact.html">Contact Us</a>
         </div>
-
     </div>
 </footer>
 
