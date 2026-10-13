@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="author" content="Dovydas Valančius">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gunna | E-SHOP</title>
+    <title>Gunna | Wonder Collection</title>
     <link rel="icon" href="/hoodie.png" type="image/png">
     <link rel="stylesheet" href="styles.css" type="text/css">
 </head>
@@ -18,12 +18,14 @@
 
             <h1 class="logo"><a href="index.html#hero">🛒 GUNNA </a></h1>
 
+            
             <button class="hamburger" id="hamburger-btn" aria-label="Open navigation menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
 
+           
             <ul id="nav-links">
                 <li><a href="index.html#hero">Home</a></li>
                 <li><a href="index.html#shop">Shop</a></li>
@@ -32,10 +34,12 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
 
-           <div class="cart-info">
-    <span>🛒 Cart: <span id="cart-count">0</span> | $<span id="total-price">0</span></span>
-    <button class="clear-btn" id="clear-cart-btn">Clear</button>
-</div>
+                            <div class="cart-info">
+            <a href="cart.html" class="cart-btn-link" aria-label="Shopping cart">
+                🛒 <span class="cart-label">Cart</span> 
+                <span id="cart-count">0</span> (<span id="total-price">0.00</span> €)
+            </a>
+        </div>
 
         </nav>
     </div>
@@ -48,51 +52,101 @@
 
         <h2>Wonder Collection</h2>
 
-        <div class="products">
+       <div class="products">
 
-            <article class="product-card">
-                <img src="pants.jpg" alt="Cargo pants" loading="lazy">
-                <h3>Streetwear cargo pants</h3>
-                <p class="price">$69</p>
-               <button class="btn1 add-to-cart-btn" data-price="69">Add To Cart</button>
-            </article>
-
-            <article class="product-card">
-                <img src="jacket.jpg" alt="Bomber jacket" loading="lazy">
-                <h3>Oversized bomber jacket</h3>
-                <p class="price">$49</p>
-                <button class="btn1 add-to-cart-btn" data-price="49">Add To Cart</button>
-            </article>
-
-            <article class="product-card">
-                <img src="sweater2.jpg" alt="Sweater" loading="lazy">
-                <h3>Graphic streetwear sweater</h3>
-                <p class="price">$32</p>
-                <button class="btn1 add-to-cart-btn" data-price="32">Add To Cart</button>
-            </article>
-
+    <article class="product-card">
+        <img src="pants.jpg" alt="Cargo pants" loading="lazy">
+        <h3>Streetwear Cargo Pants</h3>
+        <p class="price">€69</p>
+        
+        <div class="product-options">
+            <label for="size-wonder-1">Size:</label>
+            <select id="size-wonder-1" class="size-select">
+                <option value="S">S</option>
+                <option value="M" selected>M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+            </select>
         </div>
 
+        <div class="product-desc">
+            <p><strong>Material:</strong> Rugged cotton ripstop with adjustable drawstrings.</p>
+            <p><strong>Why wear it:</strong> Features utility cargo pockets and a baggy parachute-style cut that defines modern streetwear aesthetics while offering high durability.</p>
+        </div>
+
+        <button class="btn1 add-to-cart-btn" data-id="wonder-1" data-name="Streetwear cargo pants" data-price="69">Add To Cart</button>
+    </article>
+
+    <article class="product-card">
+        <img src="jacket.jpg" alt="Bomber jacket" loading="lazy">
+        <h3>Oversized Bomber Jacket</h3>
+        <p class="price">€49</p>
+        
+        <div class="product-options">
+            <label for="size-wonder-2">Size:</label>
+            <select id="size-wonder-2" class="size-select">
+                <option value="S">S</option>
+                <option value="M" selected>M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+            </select>
+        </div>
+
+        <div class="product-desc">
+            <p><strong>Material:</strong> Water-resistant nylon shell with smooth lining.</p>
+            <p><strong>Why wear it:</strong> A timeless outerwear piece scaled up with an oversized silhouette, ribbed trims, and wind-blocking protection.</p>
+        </div>
+
+        <button class="btn1 add-to-cart-btn" data-id="wonder-2" data-name="Oversized bomber jacket" data-price="49">Add To Cart</button>
+    </article>
+
+    <article class="product-card">
+        <img src="sweater2.jpg" alt="Sweater" loading="lazy">
+        <h3>Graphic Streetwear Sweater</h3>
+        <p class="price">€32</p>
+        
+        <div class="product-options">
+            <label for="size-wonder-3">Size:</label>
+            <select id="size-wonder-3" class="size-select">
+                <option value="S">S</option>
+                <option value="M" selected>M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+            </select>
+        </div>
+
+        <div class="product-desc">
+            <p><strong>Material:</strong> Soft cotton blend with high-density print.</p>
+            <p><strong>Why wear it:</strong> Makes a distinct visual statement with unique graphic styling while keeping you comfortable all day long.</p>
+        </div>
+
+        <button class="btn1 add-to-cart-btn" data-id="wonder-3" data-name="Graphic streetwear sweater" data-price="32">Add To Cart</button>
+    </article>
+
+</div>
     </div>
 </section>
 
 </main>
 
 <footer class="footer">
-    <div class="footer-wrapper">
-
+    <div class="wrapper footer-wrapper">
         <div class="footer-left">
             <p>© 2026 GUNNA</p>
+        </div>
+
+        <div class="footer-socials">
+            <a href="https://instagram.com" target="_blank" rel="noopener">📸 Instagram</a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener">🎵 TikTok</a>
+            <a href="https://gmail.com">✉️ Gmail</a>
         </div>
 
         <div class="footer-right">
             <a href="about.html">About Us</a>
             <a href="contact.html">Contact Us</a>
         </div>
-
     </div>
 </footer>
-
 
 <script src="script.js"></script>
 </body>
