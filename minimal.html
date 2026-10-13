@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="author" content="Dovydas Valančius">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gunna | E-SHOP</title>
+    <title>Gunna | Minimal Collection</title>
     <link rel="icon" href="/hoodie.png" type="image/png">
     <link rel="stylesheet" href="styles.css" type="text/css">
 </head>
@@ -18,12 +18,14 @@
 
             <h1 class="logo"><a href="index.html#hero">🛒 GUNNA </a></h1>
 
+            
             <button class="hamburger" id="hamburger-btn" aria-label="Open navigation menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
 
+           
             <ul id="nav-links">
                 <li><a href="index.html#hero">Home</a></li>
                 <li><a href="index.html#shop">Shop</a></li>
@@ -32,64 +34,118 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
 
-            <div class="cart-info">
-    <span>🛒 Cart: <span id="cart-count">0</span> | $<span id="total-price">0</span></span>
-    <button class="clear-btn" id="clear-cart-btn">Clear</button>
-</div>
+                              <div class="cart-info">
+            <a href="cart.html" class="cart-btn-link" aria-label="Shopping cart">
+                🛒 <span class="cart-label">Cart</span> 
+                <span id="cart-count">0</span> (<span id="total-price">0.00</span> €)
+            </a>
+        </div>
 
         </nav>
     </div>
 </header>
 
 <main>
+    <section class="collection">
+        <div class="wrapper">
 
-<section class="collection">
-    <div class="wrapper">
+            <h2>Best Minimal Collection</h2>
 
-        <h2>Best Minimal Collection</h2>
+           <div class="products">
 
-        <div class="products">
-
-            <article class="product-card">
-                <img src="minimalhoodie.jpg" alt="Minimal hoodie" loading="lazy">
-                <h3>Oversized Minimal Hoodie</h3>
-                <p class="price">$70</p>
-                 <button class="btn1 add-to-cart-btn" data-price="70">Add To Cart</button>
-            </article>
-
-            <article class="product-card">
-                <img src="crewneck.jpg" alt="Crewneck sweatshirt" loading="lazy">
-                <h3>Clean Crewneck Sweatshirt</h3>
-                <p class="price">$40</p>
-                 <button class="btn1 add-to-cart-btn" data-price="40">Add To Cart</button>
-            </article>
-
-            <article class="product-card">
-                <img src="ziphoodie.jpg" alt="Zip hoodie" loading="lazy">
-                <h3>Minimal Zip Hoodie</h3>
-                <p class="price">$39</p>
-                <button class="btn1 add-to-cart-btn" data-price="39">Add To Cart</button>
-            </article>
-
+    <article class="product-card">
+        <img src="minimalhoodie.jpg" alt="Minimal hoodie" loading="lazy">
+        <h3>Oversized Minimal Hoodie</h3>
+        <p class="price">€70</p>
+        
+        
+        <div class="product-options">
+            <label for="size-min-1">Size:</label>
+            <select id="size-min-1" class="size-select">
+                <option value="S">S</option>
+                <option value="M" selected>M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+            </select>
         </div>
 
-    </div>
-</section>
+        
+        <div class="product-desc">
+            <p><strong>Material:</strong> 100% premium combed cotton (400 GSM).</p>
+            <p><strong>Why wear it:</strong> Heavyweight fabric holds its shape perfectly, creating a clean oversized silhouette while delivering maximum comfort and warmth on cooler days.</p>
+        </div>
 
+        <button class="btn1 add-to-cart-btn" data-id="min-1" data-name="Oversized Minimal Hoodie" data-price="70">Add To Cart</button>
+    </article>
+
+    <article class="product-card">
+        <img src="crewneck.jpg" alt="Crewneck sweatshirt" loading="lazy">
+        <h3>Clean Crewneck Sweatshirt</h3>
+        <p class="price">€40</p>
+        
+        <div class="product-options">
+            <label for="size-min-2">Size:</label>
+            <select id="size-min-2" class="size-select">
+                <option value="S">S</option>
+                <option value="M" selected>M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+            </select>
+        </div>
+
+        <div class="product-desc">
+            <p><strong>Material:</strong> 80% organic cotton, 20% polyester.</p>
+            <p><strong>Why wear it:</strong> Minimalist design without extra branding makes it effortless to style with anything in your wardrobe, while the soft brushed interior offers exceptional everyday comfort.</p>
+        </div>
+
+        <button class="btn1 add-to-cart-btn" data-id="min-2" data-name="Clean Crewneck Sweatshirt" data-price="40">Add To Cart</button>
+    </article>
+
+    <article class="product-card">
+        <img src="ziphoodie.jpg" alt="Zip hoodie" loading="lazy">
+        <h3>Minimal Zip Hoodie</h3>
+        <p class="price">€39</p>
+        
+        <div class="product-options">
+            <label for="size-min-3">Size:</label>
+            <select id="size-min-3" class="size-select">
+                <option value="S">S</option>
+                <option value="M" selected>M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+            </select>
+        </div>
+
+        <div class="product-desc">
+            <p><strong>Material:</strong> Durable cotton and elastane blend.</p>
+            <p><strong>Why wear it:</strong> Features a smooth heavy-duty zipper and a versatile cut, making it the ultimate layering piece for an active daily routine.</p>
+        </div>
+
+        <button class="btn1 add-to-cart-btn" data-id="min-3" data-name="Minimal Zip Hoodie" data-price="39">Add To Cart</button>
+    </article>
+
+</div>
+
+        </div>
+    </section>
 </main>
 
 <footer class="footer">
-    <div class="footer-wrapper">
-
+    <div class="wrapper footer-wrapper">
         <div class="footer-left">
             <p>© 2026 GUNNA</p>
+        </div>
+
+        <div class="footer-socials">
+            <a href="https://instagram.com" target="_blank" rel="noopener">📸 Instagram</a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener">🎵 TikTok</a>
+            <a href="https://gmail.com">✉️ Gmail</a>
         </div>
 
         <div class="footer-right">
             <a href="about.html">About Us</a>
             <a href="contact.html">Contact Us</a>
         </div>
-
     </div>
 </footer>
 
